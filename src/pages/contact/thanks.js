@@ -12,15 +12,15 @@ const Thanks = (props) => {
 
     return (
         <Layout location={props.location} title={siteTitle} social={social}>
-            <SEO title="Thank You | Form submitted successfully" />
+            <SEO title="Danke für Deine Nachricht | Die Form wurde erfolgreich gesendet" />
 
 
             <article className="post-content page-template no-image">
               <div className="thank-you">
                 <div className="post-content-body">
-                    <h1>Thank You</h1>
-                    <p> Your form has been submitted Successfully</p>
-                    <p><a href="/">Return Home</a></p>
+                    <h1>Danke für Deine Nachricht</h1>
+                    <p> Deine Nachricht wurde erfolgreich versendet</p>
+                    <p><a href="/">zurück zur Startseite</a></p>
                 </div>
               </div>
             </article>

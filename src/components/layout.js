@@ -62,13 +62,13 @@ const Layout = (props) => {
                 className={`nav-home  ${data.pathname.includes("/work") ? "nav-current" : ""} `}
                 role="menuitem"
               >
-                <Link to={`/work`}>Work</Link>
+                <Link to={`/work`}>Workshops</Link>
               </li>
               <li
-                className={`nav-home  ${data.pathname.includes("/news") ? "nav-current" : ""} `}
+                className={`nav-home  ${data.pathname.includes("/location") ? "nav-current" : ""} `}
                 role="menuitem"
               >
-                <Link to={`/news`}>News</Link>
+                <Link to={`/location`}>Location</Link>
               </li>
               <li
                 className={`nav-home  ${data.pathname.includes("/contact") ? "nav-current" : ""} `}
@@ -77,16 +77,10 @@ const Layout = (props) => {
                 <Link to={`/contact`}>Contact</Link>
               </li>
               <li
-                className={`nav-home  ${data.pathname.includes("/elements") ? "nav-current" : ""} `}
+                className={`nav-home  ${data.pathname.includes("/reservation") ? "nav-current" : ""} `}
                 role="menuitem"
               >
-                <Link to={`/elements`}>Elements</Link>
-              </li>
-              <li className={`nav-home ${data.pathname.includes("/impressum") ? "nav-current" : ""}`}>
-                <Link to="/impressum">Impressum</Link>
-              </li>
-              <li className={`nav-home ${data.pathname.includes("/datenschutz") ? "nav-current" : ""}`}>
-                <Link to="/datenschutz">Datenschutz</Link>
+                <Link to={`/reservation`}>Reservation</Link>
               </li>
             </ul>
           </nav>

@@ -7,7 +7,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 const BlogPostTemplate = (props) => {
- 
+
   const { pageContext } = props
   const nextSlug = pageContext.next ? pageContext.next.fields.slug.split('/').slice(2, -1).join('/') === '' ? '/' :
     `/${pageContext.next.fields.slug.split('/').slice(2, -1).join('/')}` : '/'
@@ -24,7 +24,7 @@ const BlogPostTemplate = (props) => {
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
-        image={post.frontmatter.thumbnail.childImageSharp.gatsbyImageData.images.fallback.src}
+        image={post.frontmatter.thumbnail?.childImageSharp?.gatsbyImageData?.images?.fallback?.src}
 
       />
       <article
@@ -50,24 +50,28 @@ const BlogPostTemplate = (props) => {
           className="post-content-body"
           dangerouslySetInnerHTML={{ __html: post.html }}
         />
-        <div className="post-link">
-          <div>
-          <a style={{ display: nextLinkStatus ? "flex" : 'none', alignItems: "center", color: "#131313", fontSize: "2rem" }} href={nextSlug} >
-              <img src={LeftIcon} alt='' width={30} height={30} />
-              <span>{pageContext.next ? pageContext.next.frontmatter.title : ""}
-              </span>
-            </a>
-
+        {!post.frontmatter.hidePostLink && (
+          <div className="post-link">
+            <div>
+              <a
+                style={{ display: nextLinkStatus ? "flex" : "none", alignItems: "center", color: "#131313", fontSize: "2rem" }}
+                href={nextSlug}
+              >
+                <img src={LeftIcon} alt="" width={30} height={30} />
+                <span>{pageContext.next ? pageContext.next.frontmatter.title : ""}</span>
+              </a>
+            </div>
+            <div>
+              <a
+                style={{ display: previousLinkStatus ? "flex" : "none", alignItems: "center", color: "#131313", fontSize: "2rem" }}
+                href={previousSlug}
+              >
+                <span>{pageContext.previous ? pageContext.previous.frontmatter.title : ""}</span>
+                <img src={RightIcon} alt="" width={30} height={30} />
+              </a>
+            </div>
           </div>
-          <div>
-          <a style={{ display: previousLinkStatus ? "flex" : 'none', alignItems: "center", color: "#131313", fontSize: "2rem" }} href={previousSlug}>
-              <span>{pageContext.previous ? pageContext.previous.frontmatter.title : ""}
-              </span>
-              <img src={RightIcon} alt='' width={30} height={30} />
-            </a>
-
-          </div>
-        </div>
+        )}
       </article>
     </Layout>
   );
@@ -94,6 +98,7 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        hidePostLink
         thumbnail {
           childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH)

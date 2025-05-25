@@ -33,6 +33,13 @@ module.exports = {
         name: `pages`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/img/public`,
+      },
+    },
     // {
     //   resolve: "gatsby-source-filesystem",
     //   options: {

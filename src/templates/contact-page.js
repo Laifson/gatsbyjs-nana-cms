@@ -40,23 +40,29 @@ const ContactPage = ({ data }, location) => {
   return (
     <Layout title={siteTitle} social={social}>
       <Seo title={data.markdownRemark.frontmatter.title}
-        description={data.markdownRemark.frontmatter.description} 
-        image={data.markdownRemark.frontmatter.thumbnail.childImageSharp.gatsbyImageData.images.fallback.src}
-        />
-     
-      <article className="contact-form page-template ">
-      {data.markdownRemark.frontmatter.thumbnail && (
-        <div className="post-content-image">
-          <GatsbyImage
-            image={getImage(data.markdownRemark.frontmatter.thumbnail)}
-            className="kg-image"
-            alt={data.markdownRemark.frontmatter.title} />
-        </div>
-      )}
-        <div className="post-content-body">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Venenatis urna cursus eget nunc scelerisque. Nullam non nisi est sit amet facilisis. Quisque id diam vel quam. Morbi tincidunt augue interdum velit. Pellentesque adipiscing commodo elit at imperdiet dui accumsan. Adipiscing vitae proin sagittis nisl rhoncus mattis rhoncus urna neque. Commodo odio aenean sed adipiscing diam donec adipiscing tristique risus. Mi tempus imperdiet nulla malesuada pellentesque. Maecenas ultricies mi eget mauris pharetra et ultrices. Cursus risus at ultrices mi tempus imperdiet nulla. Sit amet nisl suscipit adipiscing bibendum est ultricies. At volutpat diam ut venenatis tellus in. Cursus eget nunc scelerisque viverra mauris in. Ut aliquam purus sit amet luctus venenatis lectus.</p>
+        description={data.markdownRemark.frontmatter.description}
+        image={data.markdownRemark.frontmatter.thumbnail?.childImageSharp?.gatsbyImageData?.images?.fallback?.src}
+      />
 
-          <h3 id="forms">Form</h3>
+      <article className="contact-form page-template ">
+        {data.markdownRemark.frontmatter.thumbnail && (
+          <div className="post-content-image">
+            <GatsbyImage
+              image={getImage(data.markdownRemark.frontmatter.thumbnail)}
+              className="kg-image"
+              alt={data.markdownRemark.frontmatter.title} />
+          </div>
+        )}
+        <div className="post-content-body">
+          <p>
+            Du hast Fragen oder Anregungen? Dann hören wir dir gerne zu. <br />
+            Du erreichst uns am einfachsten telefonisch unter <strong>0261 133 27 103</strong>, per E-Mail an <a href="mailto:kontakt@nana-mezebar.de">kontakt@nana-mezebar.de</a> oder ganz bequem über das folgende Kontaktformular.
+          </p>
+          <p>
+            Für <strong>Reservierungen</strong> nutze bitte unser Reservierungstool auf der Website. Die Stornierung einer Reservierung ist in der Regel über den Link in der Bestätigungsmail möglich, die an die von dir angegebene E-Mail-Adresse gesendet wurde.
+          </p>
+
+          <h3 id="forms">Kontaktform</h3>
           <form name="contact" method="POST" data-netlify="true" action="thanks" onSubmit={handleSubmit}
           >
             <input type="hidden" name="form-name" value="contact" />
@@ -72,7 +78,7 @@ const ContactPage = ({ data }, location) => {
                   name="first-name"
                   id="first-name"
                   onChange={handleChange}
-                  placeholder="First Name"
+                  placeholder="Vorname"
                   required={true}
                 />
               </div>
@@ -82,7 +88,7 @@ const ContactPage = ({ data }, location) => {
                   name="last-name"
                   id="last-name"
                   onChange={handleChange}
-                  placeholder="Last Name"
+                  placeholder="Nachname"
                   required={true}
                 />
               </div>
@@ -103,22 +109,9 @@ const ContactPage = ({ data }, location) => {
                   name="location"
                   id="location"
                   onChange={handleChange}
-                  placeholder="Location"
+                  placeholder="Telefon"
                   required={true}
                 />
-              </div>
-              {/* Break */}
-              {/* General, Purchase, Commissions, Exhibitions, Gallery Feature, Other */}
-              <div className="col-12">
-                <select name="category" id="category" onChange={handleChange} required={true}>
-                  <option value>-Nature of Enquiry-</option>
-                  <option value={"General"}>General</option>
-                  <option value={"Purchase"}>Purchase</option>
-                  <option value={"Commissions"}>Commissions</option>
-                  <option value={"Exhibitions"}>Exhibitions</option>
-                  <option value={"Gallery Feature"}>Gallery Feature</option>
-                  <option value={"Other"}>Other</option>
-                </select>
               </div>
 
               {/* Break */}
@@ -152,9 +145,9 @@ const ContactPage = ({ data }, location) => {
                   required={true}
                 />
               </div>
-              
+
               <div data-netlify-recaptcha="true"></div>
-  
+
               {/* Break */}
               <div className="col-12">
                 <ul className="actions">
@@ -198,7 +191,7 @@ const indexQuery = graphql`
         description
         thumbnail {
           childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH)
+            gatsbyImageData(width: 600, layout: CONSTRAINED)
                     }
         }
       }
@@ -261,12 +254,12 @@ export default props => (
 //         onSubmit={handleSubmit}
 //       >
 //         {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
-        // <input type="hidden" name="form-name" value="contact" />
-        // <p hidden>
-        //   <label>
-        //     Don’t fill this out: <input name="bot-field" onChange={handleChange} />
-        //   </label>
-        // </p>
+// <input type="hidden" name="form-name" value="contact" />
+// <p hidden>
+//   <label>
+//     Don’t fill this out: <input name="bot-field" onChange={handleChange} />
+//   </label>
+// </p>
 //         <p>
 //           <label>
 //             Your name:
