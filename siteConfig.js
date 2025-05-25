@@ -1,10 +1,10 @@
 const siteConfig = {
-  name: 'Clay',
-  shortName: 'Clay',
-  description: 'Clay - Personal Gatsby Theme',
+  name: 'nana',
+  shortName: 'nana',
+  description: 'nana - breakfast meze bar',
   url: '/', // Domain of your site without prefix!
   prefix: '/',
-  author: 'Travis Lord & Abdul Waqar',
+  author: 'Laif Schöler',
   twitter: '' ,
   facebook:'',
   github:'',

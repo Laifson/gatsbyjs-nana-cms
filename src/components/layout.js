@@ -1,11 +1,27 @@
 import React from "react";
 import { Link } from "gatsby";
 import { useLocation } from "@reach/router";
+import { graphql, useStaticQuery } from "gatsby";
 
 const Layout = (props) => {
   const data = useLocation();
   const { title, children, social } = props;
   // const path = props&&props.location&&props.location
+
+  const footerData = useStaticQuery(graphql`
+  query {
+    markdownRemark(frontmatter: { templateKey: { eq: "opening-hours" } }) {
+      frontmatter {
+        opening_hours {
+          days
+          hours
+        }
+      }
+    }
+  }
+`);
+
+  const openingHours = footerData.markdownRemark.frontmatter.opening_hours;
 
   const [toggleNav, setToggleNav] = React.useState(false);
   return (
@@ -37,10 +53,10 @@ const Layout = (props) => {
                 <Link to={`/`}>Home</Link>
               </li>
               <li
-                className={`nav-home  ${data.pathname.includes("/bio") ? "nav-current" : ""} `}
+                className={`nav-home  ${data.pathname.includes("/menu") ? "nav-current" : ""} `}
                 role="menuitem"
               >
-                <Link to={`/bio`}>Bio</Link>
+                <Link to={`/menu`}>Menu</Link>
               </li>
               <li
                 className={`nav-home  ${data.pathname.includes("/work") ? "nav-current" : ""} `}
@@ -65,6 +81,12 @@ const Layout = (props) => {
                 role="menuitem"
               >
                 <Link to={`/elements`}>Elements</Link>
+              </li>
+              <li className={`nav-home ${data.pathname.includes("/impressum") ? "nav-current" : ""}`}>
+                <Link to="/impressum">Impressum</Link>
+              </li>
+              <li className={`nav-home ${data.pathname.includes("/datenschutz") ? "nav-current" : ""}`}>
+                <Link to="/datenschutz">Datenschutz</Link>
               </li>
             </ul>
           </nav>
@@ -91,15 +113,6 @@ const Layout = (props) => {
               >
                 Instagram
               </Link>
-
-              <Link
-                to={`https://github.com/lilxyzz/gatsby-clay`}
-                title="Github"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Github
-              </Link>
             </div>
           </div>
         </div>
@@ -110,23 +123,18 @@ const Layout = (props) => {
         </div>
       </main>
       <footer className="site-foot">
-        &copy; {new Date().getFullYear()} <Link to={`/`}>{title}</Link> &mdash;
-        Built by {""}
-        <a
-          href="https://travislord.xyz/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Travis Lord
-        </a>
-        {""} & {""}
-        <a
-          href="https://github.com/abdulwaqar844"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Abdul Waqar
-        </a>
+        <p>&copy; {new Date().getFullYear()} <Link to={`/`}>{title}</Link></p>
+        <p><strong>Öffnungszeiten:</strong><br />
+          {openingHours.map((entry, idx) => (
+            <div key={idx}>
+              {entry.days}: {entry.hours}
+            </div>
+          ))}
+        </p>
+        <p>
+          <Link to="/impressum">Impressum</Link> |{" "}
+          <Link to="/datenschutz">Datenschutz</Link>
+        </p>
       </footer>
     </div>
   );

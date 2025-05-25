@@ -91,7 +91,9 @@ exports.createPages = ({ graphql, actions }) => {
     const allPage = posts.filter(item =>
       item.node.frontmatter.templateKey !== 'blog-post' &&
       item.node.frontmatter.templateKey !== 'work-sub-page' &&
-      item.node.frontmatter.templateKey !== 'exhibitions-sub-page')
+      item.node.frontmatter.templateKey !== 'exhibitions-sub-page' &&
+      item.node.frontmatter.templateKey !== 'opening-hours'
+    )
     allPage.forEach((post, index) => {
       const previous = index === allPage.length - 1 ? null : allPage[index + 1].node
       const next = index === 0 ? null : allPage[index - 1].node

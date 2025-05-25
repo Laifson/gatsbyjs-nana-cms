@@ -7,14 +7,14 @@ import Seo from "../components/seo"
 // eslint-disable-next-line
 
 
-const BioPage = (props) => {
+const MenuPage = (props) => {
 
 
     const { markdownRemark: post, site } = props.data;
 
     return (
         <Layout location={props.location} title={site.siteMetadata.title } social={site.siteMetadata.social}>
-        <Seo keywords={[`Gatsby Theme`, `Free Gatsby Template`, `Clay Gatsby Theme`]}
+        <Seo keywords={[`nana Koblenz`, `nana breakfast meze bar`, `nana meze`, 'menu', 'speisekarte']}
           title={post.frontmatter.title}
           description={post.frontmatter.description || ''}
           image={post.frontmatter.thumbnail.childImageSharp.gatsbyImageData.images.fallback.src}
@@ -48,14 +48,14 @@ const BioPage = (props) => {
     );
 };
 
-BioPage.propTypes = {
+MenuPage.propTypes = {
     data: PropTypes.object.isRequired,
 };
 
-export default BioPage;
+export default MenuPage;
 
-export const BioPageQuery = graphql`
-  query BioPage {
+export const MenuPageQuery = graphql`
+  query MenuPage {
     site {
         siteMetadata {
           title
@@ -65,7 +65,7 @@ export const BioPageQuery = graphql`
           }
         }
       }
-    markdownRemark(frontmatter: {templateKey: {eq: "bio-page"}}) {
+    markdownRemark(frontmatter: {templateKey: {eq: "menu-page"}}) {
         frontmatter {
           title
           description

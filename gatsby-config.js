@@ -64,8 +64,8 @@ module.exports = {
             resolve: "gatsby-remark-copy-linked-files",
             options: {
               // destinationDir: "public",
-              ignoreFileExtensions: [`png`, `jpg`, `jpeg`, `bmp`, `tiff` ,`webp`],
-          
+              ignoreFileExtensions: [`png`, `jpg`, `jpeg`, `bmp`, `tiff`, `webp`],
+
             },
           },
           {
@@ -93,7 +93,7 @@ module.exports = {
     },
 
     {
-      resolve: "gatsby-plugin-netlify-cms",
+      resolve: "gatsby-plugin-decap-cms",
       options: {
         modulePath: `${__dirname}/src/cms/cms.js`,
       },
@@ -136,7 +136,6 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#ffffff`,
         display: `standalone`,
-        resolve: `gatsby-plugin-manifest`,
         icon: siteConfig.manifest_icon,
       },
     },
