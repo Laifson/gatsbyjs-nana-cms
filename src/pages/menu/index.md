@@ -1,11 +1,10 @@
 ---
-templateKey: menu-page
-date: 2023-03-02T10:17:05.133Z
+templateKey: blog-post
 title: Speisekarte
-description: Hier findest du eine Übersicht unserer Getränke und Speisen.
-number: 1
-pagetype:
-  - main
+slug: /menu
+description: Hier findest Du eine Übersicht unsere Getränke und Speisen
+hidePostLink: true
+featuredimage: /img/clay-images-15.jpg
 ---
 ## Frühstück
 

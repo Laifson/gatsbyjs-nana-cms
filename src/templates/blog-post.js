@@ -4,7 +4,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import LeftIcon from '../img/left-icon.svg'
 import RightIcon from '../img/right-icon.svg'
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import SEO from "../components/SEO"
 
 const BlogPostTemplate = (props) => {
 

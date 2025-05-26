@@ -4,7 +4,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { navigate } from 'gatsby-link'
 
 import Layout from "../components/layout"
-import Seo from "../components/seo"
+import Seo from "../components/SEO"
 
 import "../utils/normalize.css"
 import "../utils/css/screen.css"
@@ -200,7 +200,7 @@ const indexQuery = graphql`
   }
 `
 
-export default props => (
+const props = () => (
   <StaticQuery
     query={indexQuery}
     render={data => (
@@ -209,6 +209,7 @@ export default props => (
   />
 )
 
+export default props;
 
 // import React from 'react'
 // import { navigate } from 'gatsby-link'
