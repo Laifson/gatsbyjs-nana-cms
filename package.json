@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "author": "Travis lord <travis.lord89@gmail.com> & Abdul Waqar <abdulwaqar844@gmail.com>",
   "dependencies": {
-    "decap-cms": "^3.6.3",
+    "decap-cms": "^3.6.4",
     "decap-cms-app": "^3.6.3",
     "gatsby": "^5.13.7",
     "gatsby-plugin-decap-cms": "^4.0.0",
